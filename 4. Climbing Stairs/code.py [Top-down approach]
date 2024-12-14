@@ -1,0 +1,27 @@
+class Solution:
+    def __init__(self):
+        self.memory = {}  # Initialize a dictionary to store computed values
+    
+    def climbStairs(self, n: int) -> int:
+        # Check if the result for n is already computed
+        if n in self.memory:
+            return self.memory[n]
+        # Base cases
+        if n == 1:
+            return 1
+        elif n == 2:
+            return 2
+        # Recursive step with memoization
+        self.memory[n] = self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        return self.memory[n]
+
+# Main function to test the Solution
+def main():
+    solution = Solution()
+    # Test cases
+    print("Number of ways to climb 5 stairs:", solution.climbStairs(5))   # Output: 8
+    print("Number of ways to climb 10 stairs:", solution.climbStairs(10)) # Output: 89
+    print("Number of ways to climb 44 stairs:", solution.climbStairs(44)) # Output: 1134903170
+
+if __name__ == "__main__":
+    main()
