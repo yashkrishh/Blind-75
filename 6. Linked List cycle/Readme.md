@@ -1,3 +1,47 @@
+#### **Why Does This Always Happen?**
+- Because the cycle forms a closed loop, the fast pointer will keep moving around the loop, reducing the distance to the slow pointer by one node each step. Eventually, this distance becomes zero, and the pointers meet.
+
+### Why the Algorithm Works in \( O(n) \) Time:
+
+#### **Key Point:**
+Even though the fast pointer and slow pointer move at different speeds within the cycle, the total time for them to meet is bounded by \( O(n) \), where \( n \) is the total number of nodes in the list (including the cycle). Here's why:
+
+---
+
+#### **1. Time Outside the Cycle (Linear Traversal):**
+- Before entering the cycle, both pointers traverse the non-cyclic part of the list.
+- This takes at most \( n - k \) steps, where \( k \) is the number of nodes in the cycle.
+- This part contributes \( O(n - k) \) to the time complexity.
+
+---
+
+#### **2. Time Within the Cycle (Meeting Point):**
+- Once the pointers enter the cycle:
+  - Let the distance between the slow pointer and the fast pointer be \( d \) (measured in nodes within the cycle).
+  - At each step, the fast pointer reduces this distance by **1 node per step**, because:
+    - The fast pointer moves 2 steps.
+    - The slow pointer moves 1 step.
+    - Relative speed = \( 2 - 1 = 1 \) node per step.
+  - Since the cycle contains \( k \) nodes, it will take at most \( k \) steps for the fast pointer to "lap" and meet the slow pointer.
+
+---
+
+#### **Why It Is \( O(n) \):**
+- The time taken to traverse the non-cyclic part is \( O(n - k) \).
+- The time taken within the cycle is \( O(k) \).
+- Therefore, the total time is:
+  \[
+  O(n - k) + O(k) = O(n)
+  \]
+- This shows that even in the worst case, the algorithm completes in linear time relative to the size of the linked list.
+
+---
+
+#### **Why It Doesn't Take "Much Longer":**
+- While it may seem like the fast and slow pointers could take a long time to meet, their relative speed ensures they close the distance \( d \) in a linear number of steps relative to the cycle size \( k \), which is already bounded by \( n \). Thus, the total traversal time remains \( O(n) \).
+
+
+
 ### Explanation of `while fast is not None and fast.next is not None`:
 
 This condition ensures:
