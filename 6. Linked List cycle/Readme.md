@@ -28,3 +28,21 @@ This condition ensures:
 
 #### 5. **Assuming Nodes are Unique:**
    - Comparing nodes by their values (`slow.val == fast.val`) instead of checking if the pointers themselves are the same (`slow == fast`). Node values may match in separate parts of the list without indicating a cycle.
+
+---
+
+### Time and Space Complexity:
+
+#### **Time Complexity: O(n)**
+- The `slow` pointer traverses the linked list one step at a time, and the `fast` pointer traverses it two steps at a time.
+- In the worst-case scenario, the `fast` pointer will traverse the entire list, meaning each node is visited at most twice (once by `slow` and once by `fast`).
+- Thus, the time complexity is linear, \( O(n) \), where \( n \) is the number of nodes in the linked list.
+
+#### **Space Complexity: O(1)**
+- The algorithm uses two pointers (`slow` and `fast`), which require constant space.
+- No additional data structures (e.g., arrays or hash tables) are used, so the space complexity is constant, \( O(1) \).
+
+#### **Summary:**
+- **Time Complexity:** \( O(n) \)
+- **Space Complexity:** \( O(1) \)
+
